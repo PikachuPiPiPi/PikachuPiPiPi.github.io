@@ -9,4 +9,58 @@
 
 </body>
 <script src="res/js/block100.js"></script>
+<script>
+    function scalingColumn(ww,hh,maxWidth1,maxHeight1){
+		var w = ww;
+		var h = hh;
+		var maxWidth = maxWidth1;
+		var maxHeight = maxHeight1;
+		// $maxHeight = 249;
+		// $maxWidth = 247;
+		var obj = new Object();
+
+		var wph = w/h;
+		var maxWph = maxWidth/maxHeight;
+
+		if(w > maxWidth || h > maxHeight) {
+
+			if(wph < maxWph) {
+				 h = maxHeight;
+				 w = h * wph;
+			} else {
+				 w = maxWidth;
+				 h = w / wph;
+			}
+		}
+
+		obj.width = w;
+		obj.height = h;
+
+		return obj;
+
+	}
+
+    window.onload = function () {
+        if (typeof (app) != "undefined") {
+
+            var canvasW = document.querySelector("canvas").width;
+            var canvasH = document.querySelector("canvas").height;
+
+            var oH = window.height;
+            var oW = window.width;
+
+            var upshot = new scalingColumn(canvasW, canvasH, oW, oH);
+
+            var lv1 = upshot.width / oW * 100;
+            var lv2 = upshot.height / oH * 100;
+
+            try {
+                app.view.style.width = lv1 + "%"
+                app.view.style.height = lv2 + "%";
+            } catch (e) {
+            }
+
+        }
+    }
+</script>
 </html>
