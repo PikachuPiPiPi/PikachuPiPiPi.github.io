@@ -1458,21 +1458,21 @@ endPanel.addChild(endBtn);
 
 //重新开始
 const restartBtn = new Graphics();
-restartBtn.beginFill(0xF60FBC,0.1);
+restartBtn.beginFill(0xF60FBC,0.08);
 restartBtn.drawRoundedRect(0,0,35,35,8);
 restartBtn.endFill();
-restartBtn.position.set(5,5);
+restartBtn.position.set(500,5);
 restartBtn.interactive = true;
 restartBtn.buttonMode = true;
 restartBtn.on('pointertap',function() {
-    restartBtn.interactive = false;
     restartPanel.visible = true;
-    for(let i=0;i<3;i++) {
+    restartBtn.interactive = false;
+    for(let i=0;i<shapePanelArr.length;i++) {
         shapePanelArr[i].view.interactive = false;
         shapePanelArr[i].shapeCon.interactive = false;
         shapePanelArr[i].rotateBtn.interactive = false;
     }
-    for(let i=0;i<6;i++) {
+    for(let i=0;i<propArr.length;i++) {
         propArr[i].view.interactive = false;
     }
 });
@@ -1482,8 +1482,8 @@ const restartIcon = new Label("| |",new TextStyle({
     fontFamily: "微软雅黑",
     fontSize: 15,
     fontWeight: "bold",
-    fill: "#AAAAAA",
-    stroke: "#AAAAAA",
+    fill: "#000000",
+    stroke: "#000000",
     strokeThickness: 3
 }));
 restartIcon.anchor.set(0.5,0.5);
