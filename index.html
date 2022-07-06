@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>100块</title>
     <style>
    		*{margin:0px; padding:0px; border:0;}
@@ -12,6 +13,7 @@
    			transform:translate(-50%,-50%);
    		}
 	</style>
+    <script src="res/js/jquery-1.7.2.js"></script>
     <script src="res/js/pixi.js"></script>
 </head>
 <body>
@@ -49,27 +51,26 @@
 
 	}
 
-    window.onload = function () {
-        if (typeof (app) != "undefined") {
+    window.onload = function(){
+		if(typeof(app) !="undefined"){
 
-            var canvasW = document.querySelector("canvas").width;
-            var canvasH = document.querySelector("canvas").height;
+			var canvasW = $("canvas").width();
+			var canvasH = $("canvas").height();
 
-            var oH = window.height;
-            var oW = window.width;
+			var oH = $(window).height();
+			var oW = $(window).width();
 
-            var upshot = new scalingColumn(canvasW, canvasH, oW, oH);
+			var upshot =new scalingColumn(canvasW,canvasH,oW,oH);
 
-            var lv1 = upshot.width / oW * 100;
-            var lv2 = upshot.height / oH * 100;
+			var lv1 = upshot.width/oW * 100;
+			var lv2 = upshot.height/oH * 100;
 
-            try {
-                app.view.style.width = lv1 + "%"
-                app.view.style.height = lv2 + "%";
-            } catch (e) {
-            }
+			try{
+				app.view.style.width = lv1 + "%"
+				app.view.style.height = lv2 + "%";
+			}catch(e){}
 
-        }
-    }
+		}
+	}
 </script>
 </html>
